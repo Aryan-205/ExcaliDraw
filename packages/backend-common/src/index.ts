@@ -1,0 +1,1 @@
+export const JWT_SECRET_KEY = "123123" || process.evn.JWT_SECRET_KEY
