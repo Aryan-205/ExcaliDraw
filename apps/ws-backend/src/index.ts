@@ -70,8 +70,7 @@ wss.on('connection', function connection(ws, request) {
       if (!user) {
         return;
       }
-      user.rooms = user?.rooms.filter(x => x === parsedData.room);
-    }
+      user.rooms.filter(x => x !== parsedData.roomId);    }
 
     console.log("message received")
     console.log(parsedData);
