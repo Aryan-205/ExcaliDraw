@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -10,8 +11,12 @@ export default function Home() {
           <a href="#" className="hover:text-blue-400">Home</a>
           <a href="#features" className="hover:text-blue-400">Features</a>
           <a href="https://github.com/Aryan-205/ExcaliDraw" target="_blank" rel="noreferrer" className="hover:text-blue-400">GitHub</a>
-          <a href="/login" className="hover:text-blue-400 border border-white hover:border-blue-400 rounded-lg px-4 py-2">Login</a>
-          <a href="/login" className="bg-blue-500 hover:bg-blue-600 rounded-lg shadow-lg transition transform hover:scale-105 px-4 py-2">Signup</a>
+          <Link href="/signin">
+            <button className="hover:text-blue-400 border border-white hover:border-blue-400 rounded-lg px-4 py-2">Login</button>
+          </Link>
+          <Link href="/signup">
+            <button className="bg-blue-500 hover:bg-blue-600 rounded-lg shadow-lg transition transform hover:scale-105 px-4 py-2">Signup</button>
+          </Link>
         </div>
       </nav>
 
@@ -23,9 +28,11 @@ export default function Home() {
         <p className="max-w-2xl text-lg text-gray-400 mb-8">
           A real-time collaborative drawing tool for teams, creators, and dreamers.
         </p>
+        <Link href='/signup'>
         <button className="px-8 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-lg transition transform hover:scale-105">
           Get Started
         </button>
+        </Link>
       </section>
 
       {/* Preview Section */}
