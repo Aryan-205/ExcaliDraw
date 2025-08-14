@@ -4,9 +4,15 @@ import { JWT_SECRET } from '@repo/backend-common/config';
 import { middleware }  from "./middleware";
 import { CreateUserSchema, SigninSchema, CreateRoomSchema } from "@repo/common/types";
 import { prismaClient } from "@repo/db/client";
+import cors from "cors"
 
 const app = express();
 app.use(express.json());
+
+app.use(cors({
+  origin: "http://localhost:3001", // frontend URL
+  credentials: true               // if using cookies/auth
+}));
 
 app.post("/signup", async (req, res) => {
 
@@ -68,6 +74,27 @@ app.post("/signin", async (req, res) => {
     res.json({
         token
     })
+})
+
+app.get("/rooms",middleware,async (req,res)=>{
+    //@ts-ignore
+    const userId = req.userId
+
+    if (!userId) {
+        return res.status(400).json({ message: "User ID missing from token" });
+    }
+    try {
+        const rooms = await prismaClient.user.findUnique({
+            where: { id: userId }, // keep as string
+            select: { rooms: true },
+        });
+
+        res.json({ rooms });
+    } catch (e) {
+        console.error("Error fetching rooms:", e);
+        res.status(500).json({ message: "Internal server error" });
+    }
+
 })
 
 app.post("/room", middleware, async (req, res) => {

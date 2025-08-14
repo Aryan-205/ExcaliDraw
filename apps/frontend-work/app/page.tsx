@@ -28,9 +28,9 @@ export default function Home() {
         <p className="max-w-2xl text-lg text-gray-400 mb-8">
           A real-time collaborative drawing tool for teams, creators, and dreamers.
         </p>
-        <Link href='/signup'>
+        <Link href='/room'>
         <button className="px-8 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg shadow-lg transition transform hover:scale-105">
-          Get Started
+          Create Room
         </button>
         </Link>
       </section>
