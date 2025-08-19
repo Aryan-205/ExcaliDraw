@@ -5,13 +5,8 @@ import { Game } from "@/draw/Game";
 
 export type Tool = "circle" | "rect" | "pencil";
 
-export function Canvas({
-    roomId,
-    socket
-}: {
-    socket: WebSocket;
-    roomId: string;
-}) {
+export function Canvas({ roomId, socket }: { socket: WebSocket; roomId: string;}) {
+    
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [game, setGame] = useState<Game>();
     const [selectedTool, setSelectedTool] = useState<Tool>("circle")
@@ -42,17 +37,13 @@ export function Canvas({
         <Topbar setSelectedTool={setSelectedTool} selectedTool={selectedTool} />
     </div>
 }
-
+//Tool bar
 function Topbar({selectedTool, setSelectedTool}: {
     selectedTool: Tool,
     setSelectedTool: (s: Tool) => void
 }) {
-    return <div style={{
-            position: "fixed",
-            top: 10,
-            left: 10
-        }}>
-            <div className="flex gap-t">
+    return <div className="fixed top-0 left-[43%]">
+            <div className="flex gap-4">
                 <IconButton 
                     onClick={() => {
                         setSelectedTool("pencil")

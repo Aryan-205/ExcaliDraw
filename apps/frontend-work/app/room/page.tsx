@@ -48,11 +48,11 @@ export default function Room() {
       });
 
       if (!response.ok) {
-        console.error(await response.text()); // Debug unexpected HTML/error
+        console.error(await response.text()); 
         return;
       }
 
-      const roomData = await response.json(); // <-- parse JSON first
+      const roomData = await response.json(); 
       setSlug("");
       await fetchRooms();
     } catch (error) {
